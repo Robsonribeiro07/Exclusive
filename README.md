@@ -24,5 +24,5 @@ Para configurar o OAuth 2.0 com o Google, siga os passos abaixo:
 - Exemplo de como usar no seu código:
 
 - crie um arquivo .env.local e coloque as variáveis de ambiente
-- coloque o .env.local no .gitignore
+- rode o comando `npm i --force`
 - rode o comando `npm run dev`

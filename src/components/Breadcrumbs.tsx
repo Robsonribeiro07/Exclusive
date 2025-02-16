@@ -4,7 +4,7 @@ import { ComponentProps } from "react"
 import { tv, VariantProps } from 'tailwind-variants'
 
 const BreadcrumbsStyle = tv({
-    base: "flex gap-2",
+    base: "flex gap-2 text-[0.8rem] capitalize",
     variants: {
         isRouterProps: {
             true: "text-black",

@@ -6,13 +6,12 @@ import { usePathname } from "next/navigation";
 export default function Page() {
 
     const pathname = usePathname()
+    
+    const pathnames = '/auth/sign-in/dashboard'
     return (
-        <div>
-            <Breadcrumbs pathname={pathname} />
-            <h1>Sobre</h1>
-            <Button variant="secondary">
-                Click me
-            </Button>
+        <div className="flex w-full max-w-[1170px] mx-auto">
+            <Breadcrumbs pathname={pathnames} />
+           
         </div>
     )
 }

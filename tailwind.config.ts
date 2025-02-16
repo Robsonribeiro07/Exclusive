@@ -28,6 +28,7 @@ export default {
   			Blakc: '#000000',
   			buttonRed: '#702222',
   			gray100: '#BFBFBF',
+			redSticker: "#DB4444",
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

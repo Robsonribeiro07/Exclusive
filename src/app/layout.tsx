@@ -45,7 +45,7 @@ export default function RootLayout({
         <Header />
         <Separator/>
         
-        <main className="flex-1 flex w-full flex-col mt-[2.09375rem]">
+        <main className="flex-1 flex w-full flex-col">
           <Toaster position="top-center" richColors/>
           {children}
         </main>
