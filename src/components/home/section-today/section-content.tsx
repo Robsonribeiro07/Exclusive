@@ -1,12 +1,40 @@
-import { SectionHeader } from "./section-header";
+'use client'
+import { Product, Products } from '@/api/products/get-products'
+import { SectionHeader } from './section-header'
+import { CarouselProducts } from '@/components/products/carousel-products'
+import { useState } from 'react'
 
-export function SectionContentTodays() {
-    return (
-        <div className="w-full  h-full max-h-[30,8125rem] mt-[9.125rem]">
-          <SectionHeader/>
-            
+export function SectionContentTodays({
+  products: InititalProducts,
+}: {
+  products: Product[]
+}) {
+  const [products, setProducts] = useState(InititalProducts)
 
-            
-        </div>
+  const handleSearchMoreProducts = async (limit: number) => {
+    const response = await fetch(
+      `https://fakestoreapi.com/products?limit=${limit}`
     )
+
+    const newProducts = (await response.json()) as Products[]
+
+    // const filtredProducts = newProducts.filter(
+    //   (newProducts) =>
+    //     !products.some((products) => products.products. !== newProducts.id)
+    // )
+
+    // setProducts([...products, ...filtredProducts])
+  }
+
+  return (
+    <div className="w-full  h-full max-h-[30,8125rem] mt-[9.125rem]">
+      <SectionHeader />
+      <div className="w-full h-full max-h-[30,8125rem] mt-[9.125rem]">
+        <CarouselProducts
+          products={products}
+          handleNewProducts={handleSearchMoreProducts}
+        />
+      </div>
+    </div>
+  )
 }

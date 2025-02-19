@@ -1,57 +1,48 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { Input } from './input'
-import exp from 'constants'
 
+describe('Input component', () => {
+  afterEach(() => {
+    cleanup()
+  })
 
-describe("Input component", () => {
+  it('Alterna o tipo do input entre password e text', () => {
+    render(<Input placeholder="Digite seu nome" name="name" type="password" />)
 
-    afterEach(() => {
-        cleanup()
-    })
+    const input = screen.getByPlaceholderText('Digite seu nome')
 
-    it("Alterna o tipo do input entre password e text", () => {
-        render(<Input placeholder="Digite seu nome" name="name" type="password" />)
+    const buttonTogle = screen.getByRole('button')
 
-        const input = screen.getByPlaceholderText("Digite seu nome")
+    expect(input).toHaveAttribute('type', 'password')
+    fireEvent.click(buttonTogle)
 
-        const buttonTogle = screen.getByRole("button")
+    expect(input).toHaveAttribute('type', 'text')
 
-        expect(input).toHaveAttribute("type", "password")
-        fireEvent.click(buttonTogle)
+    fireEvent.click(buttonTogle)
 
-        expect(input).toHaveAttribute("type", "text")
+    expect(input).toHaveAttribute('type', 'password')
+  })
 
-        fireEvent.click(buttonTogle)
+  it('Renderiza corretamente o placeholder', () => {
+    render(<Input placeholder="Digite seu nome" name="name" />)
 
-        expect(input).toHaveAttribute("type", "password")
+    const input = screen.getByPlaceholderText('Digite seu nome')
 
+    expect(input).toBeInTheDocument()
+  })
 
-    })
-    
-    it("Renderiza corretamente o placeholder", () => {
-            
-        render(<Input placeholder="Digite seu nome" name="name" />)
+  it('Renderiza corretamente o tipe password', () => {
+    render(<Input placeholder="Digite seu nome" name="name" type="password" />)
 
-        const input = screen.getByPlaceholderText("Digite seu nome")
+    const input = screen.getByPlaceholderText('Digite seu nome')
 
-        expect(input).toBeInTheDocument()
-    })
+    expect(input).toHaveAttribute('type', 'password')
+  })
+  it('Renderiza corretamente o input com type text', () => {
+    render(<Input placeholder="Digite seu nome" name="name" type="text" />)
 
-    it("Renderiza corretamente o tipe password", () => {
-        render(<Input placeholder="Digite seu nome" name="name" type="password" />)
+    const inputText = screen.getByPlaceholderText('Digite seu nome')
 
-        const input = screen.getByPlaceholderText("Digite seu nome")
-
-        expect(input).toHaveAttribute("type", "password")
-
-        
-    })
-    it("Renderiza corretamente o input com type text", () => {
-        render(<Input placeholder="Digite seu nome" name="name" type="text" />)
-
-        const inputText = screen.getByPlaceholderText("Digite seu nome")
-
-        expect(inputText).toHaveAttribute("type", "text")
-    })
-
+    expect(inputText).toHaveAttribute('type', 'text')
+  })
 })

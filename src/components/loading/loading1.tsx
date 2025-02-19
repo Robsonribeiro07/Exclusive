@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const Loader = () => {
   return (
-    <StyledWrapper className='mx-auto'>
+    <StyledWrapper className="mx-auto">
       <div className="loading-wave">
         <div className="loading-bar" />
         <div className="loading-bar" />
@@ -11,7 +11,7 @@ const Loader = () => {
         <div className="loading-bar" />
       </div>
     </StyledWrapper>
-  );
+  )
 }
 
 const StyledWrapper = styled.div`
@@ -56,6 +56,7 @@ const StyledWrapper = styled.div`
     100% {
       height: 10px;
     }
-  }`;
+  }
+`
 
-export default Loader;
+export default Loader

@@ -1,24 +1,25 @@
-"use client"
-import { UseCountdown } from "@/hooks/use-conntwdown"
-import { CountdownStep } from "./countdown-step"
+'use client'
+import { UseCountdown } from '@/hooks/use-conntwdown'
+import { CountdownStep } from './countdown-step'
 
 export function Countdowm() {
+  const { timeLeft } = UseCountdown({ date: '2025-02-20' })
 
-    const {timeLeft} = UseCountdown({date: "2025-02-17"})
-
-     
-    return (
-        <div className="flex gap-[1.1rem]">
-            {Object.entries(timeLeft).map(([keyframe, {value, title}]) => {
-                return (
-                    <CountdownStep 
-                        key={keyframe}
-                        title={title}
-                        value={value}
-                    />
-                    
-                )
-            })  }
-        </div>
-    )
+  return (
+    <div className="flex gap-[1.1rem] select-none">
+      {Object.entries(timeLeft).map(
+        ([keyframe, { value, title }], index, array) => {
+          const isEnd = index === array.length - 1
+          return (
+            <CountdownStep
+              key={keyframe}
+              title={title}
+              value={value}
+              IsEnd={isEnd}
+            />
+          )
+        }
+      )}
+    </div>
+  )
 }

@@ -27,7 +27,7 @@ body {
   input {
     &:focus {
       border: 0 0 0 1px;
-      outline:none
+      outline: none;
     }
   }
 }

@@ -1,14 +1,12 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface CardProps {
   handleRedirectUser: () => void
   handleCloseModal: () => void
 }
-const Card = ({handleRedirectUser, handleCloseModal}: CardProps) => {
-
-  
+const Card = ({ handleRedirectUser, handleCloseModal }: CardProps) => {
   return (
-    <StyledWrapper className='fixed top-0 left-0 w-full h-full flex items-center justify-center'>
+    <StyledWrapper className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
       <div className="brutalist-card">
         <div className="brutalist-card__header">
           <div className="brutalist-card__icon">
@@ -18,16 +16,26 @@ const Card = ({handleRedirectUser, handleCloseModal}: CardProps) => {
           </div>
           <div className="brutalist-card__alert">Alerta</div>
         </div>
-        <div className="brutalist-card__message" >
+        <div className="brutalist-card__message">
           Cadastro ja existe deseja continuar?
         </div>
         <div className="brutalist-card__actions">
-          <a className="brutalist-card__button brutalist-card__button--mark" onClick={handleRedirectUser} >Sim</a>
-          <a className="brutalist-card__button brutalist-card__button--read" onClick={handleCloseModal} >Nao</a>
+          <a
+            className="brutalist-card__button brutalist-card__button--mark"
+            onClick={handleRedirectUser}
+          >
+            Sim
+          </a>
+          <a
+            className="brutalist-card__button brutalist-card__button--read"
+            onClick={handleCloseModal}
+          >
+            Nao
+          </a>
         </div>
       </div>
     </StyledWrapper>
-  );
+  )
 }
 
 const StyledWrapper = styled.div`
@@ -37,7 +45,7 @@ const StyledWrapper = styled.div`
     background-color: #fff;
     padding: 1.5rem;
     box-shadow: 10px 10px 0 #000;
-    font-family: "Arial", sans-serif;
+    font-family: 'Arial', sans-serif;
   }
 
   .brutalist-card__header {
@@ -110,7 +118,7 @@ const StyledWrapper = styled.div`
   }
 
   .brutalist-card__button::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: -100%;
@@ -151,6 +159,7 @@ const StyledWrapper = styled.div`
   .brutalist-card__button:active {
     transform: translate(5px, 5px);
     box-shadow: none;
-  }`;
+  }
+`
 
-export default Card;
+export default Card

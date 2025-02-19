@@ -1,20 +1,25 @@
-import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react"; // Ícones para alternar senha
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react' // Ícones para alternar senha
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  placeholder: string;
-  name: string;
+  placeholder: string
+  name: string
   register?: ReturnType<UseFormRegister<FieldValues>>
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
 }
 
-export function Input({ placeholder, type, name, register, ...rest}: InputProps) {
-  const [showPassword, setShowPassword] = useState(false);
+export function Input({
+  placeholder,
+  type,
+  name,
+  register,
+  ...rest
+}: InputProps) {
+  const [showPassword, setShowPassword] = useState(false)
 
-  const isPassword = type === "password";
-  
-  const inputType = isPassword && showPassword ? "text" : type;
+  const isPassword = type === 'password'
+
+  const inputType = isPassword && showPassword ? 'text' : type
 
   return (
     <div className="relative w-full">
@@ -27,7 +32,7 @@ export function Input({ placeholder, type, name, register, ...rest}: InputProps)
         {...register}
         {...rest} // Garante que qualquer outra propriedade seja passada
       />
-      
+
       {isPassword && (
         <button
           type="button"
@@ -38,5 +43,5 @@ export function Input({ placeholder, type, name, register, ...rest}: InputProps)
         </button>
       )}
     </div>
-  );
+  )
 }
