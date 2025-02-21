@@ -20,7 +20,7 @@ const getProducts = async (): Promise<ResponseProducts[]> => {
 export default async function Page() {
   const data = await getProducts()
   return (
-    <div className="mx-auto w-full max-w-[1170px] min-h-screen my-[5.125rem]">
+    <div className="mx-auto w-full max-w-[1170px] min-h-screen my-[5.125rem] ">
       <SectionsProduct data={data} />
     </div>
   )

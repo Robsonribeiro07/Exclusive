@@ -31,7 +31,7 @@ export function CardProduct({
 
   return (
     <div
-      className="h-[21.875rem] w-[250px] cursor-pointer"
+      className="h-[21.875rem] w-[250px] cursor-pointer min-h-fit"
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
       data-testid="card-product"

@@ -3,6 +3,7 @@ import { ResponseProducts } from '@/app/(public)/products/Wishlist/page'
 import { CarouselProdcuts } from './carousel-prodcuts'
 import { HeaderCategoryId } from './header'
 import { useState } from 'react'
+import { ContentForYou } from './Just-for-you/content'
 
 export function SectionsProduct({ data }: { data: ResponseProducts[] }) {
   const [initailProducts, setInitailProducts] =
@@ -15,12 +16,14 @@ export function SectionsProduct({ data }: { data: ResponseProducts[] }) {
     setInitailProducts(newProductsWithinRemovedProcuts)
   }
   return (
-    <div className="w-full h-[4rem] flex flex-col gap-10  ">
+    <div className="w-full flex flex-col gap-10 h-full  ">
       <HeaderCategoryId totalProducts={initailProducts.length} />
       <CarouselProdcuts
         data={initailProducts}
         handleRemoveItem={handleRemoveItem}
       />
+
+      <ContentForYou data={initailProducts} />
     </div>
   )
 }
