@@ -11,7 +11,12 @@ const itemsDetailsProfile = [
   { icon: 'user', label: 'Manage My Account', key: 'Account' },
   { icon: 'shoppingBag', label: 'My Orders', key: 'Orders' },
   { icon: 'Close', label: 'My cancellations', key: 'cancellations' },
-  { icon: 'Favorite', label: 'My Reviews', key: 'Wishlist' },
+  {
+    icon: 'Favorite',
+    label: 'My Wishlist',
+    key: 'Wishlist',
+    href: '/products/wishlist',
+  },
   { icon: 'LogOut', label: 'Logout', key: 'Logout' },
 ] as (ItemsProps & { key: string })[]
 export function DetailsProfile() {
@@ -29,7 +34,12 @@ export function DetailsProfile() {
         side="left"
       >
         {itemsDetailsProfile.map((item) => (
-          <Items key={item.key} icon={item.icon} label={item.label} />
+          <Items
+            key={item.key}
+            icon={item.icon}
+            label={item.label}
+            href={item.href}
+          />
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

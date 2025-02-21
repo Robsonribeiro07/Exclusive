@@ -5,7 +5,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { CardProductWishlist } from './Wishlist-products'
-import { ResponseProducts } from '@/app/(public)/products/Wishlist/page'
+import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
 
 export function CarouselProdcuts({
   data,

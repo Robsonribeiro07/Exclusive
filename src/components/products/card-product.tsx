@@ -12,11 +12,13 @@ interface CardProductProps {
   price: number
   image: string
   showAddCartDefault?: boolean
+  id: string
 }
 export function CardProduct({
   title,
   price,
   image,
+  id,
   showAddCartDefault = false,
 }: CardProductProps) {
   const [showAddCart, setShowAddCart] = useState(showAddCartDefault)
@@ -36,7 +38,7 @@ export function CardProduct({
       onMouseLeave={handleMouseLeave}
       data-testid="card-product"
     >
-      <div className="w-full h-[70%] bg-gray200 relative rounded-4 flex flex-col items-center overflow-hidden">
+      <div className="w-full h-[70%] bg-gray200 relative rounded-4 flex flex-col items-center justify-center overflow-hidden ">
         <ProductDescont descont={50} className="absolute top-3 left-2 " />
         <div className="absolute top-3 right-2 flex flex-col gap-2">
           <Eye
@@ -51,13 +53,13 @@ export function CardProduct({
 
         <Image
           src={image}
-          width={120}
-          height={120}
+          width={600}
+          height={600}
           alt="monitor"
-          className="w-[12rem] h-full  object-cover"
+          className="w-[80%] h-[80%]  object-contain"
         />
 
-        <AddCart showAddCart={showAddCart} />
+        <AddCart showAddCart={showAddCart} handleAddProduct={() => {}} />
       </div>
 
       <p className="text-gray500 text-sm font-medium">{title}</p>

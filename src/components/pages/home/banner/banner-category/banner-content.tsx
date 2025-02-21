@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button'
 export function BannerContent() {
   const { timeLeft } = UseCountdown({ date: '2025-03-01' })
   return (
-    <div className="w-full h-[31.rem] bg-black flex justify-around px-[3.5rem] mt-[6rem]">
+    <div className="w-full h-fit bg-black flex justify-around px-[3.5rem] mt-[6rem]  flex-col sm:flex-row">
       <div className="py-[3.5rem]">
         <p className="text-[#00FF66] text-[1rem]">Categories</p>
-        <p className="text-3xl font-semibold text-[#FAFAFA]">
+        <p className="lg:text-3xl text-xl font-semibold text-[#FAFAFA]">
           Enhance Your <br /> Music Experience
         </p>
 

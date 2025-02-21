@@ -1,4 +1,4 @@
-import { ResponseProducts } from '@/app/(public)/products/Wishlist/page'
+import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
 import { CardProduct } from '@/components/products/card-product'
 import {
   Carousel,
@@ -16,6 +16,7 @@ export function CarouselForYou({ data }: { data: ResponseProducts[] }) {
               title={products.title}
               price={Number(products.price)}
               image={products.image}
+              id={products.id.toString()}
             />
           </CarouselItem>
         ))}

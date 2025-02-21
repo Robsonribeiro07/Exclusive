@@ -13,7 +13,7 @@ export function FeatureContent() {
     <div className="h-[40rem]">
       <HeaderFeatured />
 
-      <div className="h-full w-full grid grid-cols-2 gap-[2rem] mt-[2.5rem]">
+      <div className="h-full w-full flex flex-col lg:grid lg:grid-cols-2 gap-[2rem] mt-[2.5rem]">
         <div className=" h-full flex items-end bg-black pb-3">
           <Card
             className="bg-black flex flex-col relative h-[70%]"

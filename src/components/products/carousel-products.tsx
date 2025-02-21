@@ -9,8 +9,8 @@ import {
 } from '../ui/carousel'
 import { CardProduct } from '@/components/products/card-product'
 import { Button } from '../ui/button'
-import { Product } from '@/api/products/get-products'
 import { useEffect, useState } from 'react'
+import { Product } from '@/api/products/get-products'
 
 interface CarouselProductsProps {
   products: Product[]
@@ -44,7 +44,6 @@ export function CarouselProducts({
     }
   }, [api, currentIndex, count, handleNewProducts])
 
-  console.log(products)
   return (
     <Carousel
       className="w-full mt-[3rem] cursor-pointer select-none  "
@@ -56,6 +55,7 @@ export function CarouselProducts({
             <CardProduct
               title={item.title}
               price={item.price}
+              id={item.id.toString()}
               image={item.images[0]}
             />
           </CarouselItem>

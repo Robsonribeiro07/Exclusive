@@ -45,8 +45,6 @@ export function useLocationInformationForm() {
   })
 
   const handleSubmitForm = async (data: locationInformationFormData) => {
-    console.log(data)
-
     if (!data) return
 
     const { Pais, Estado, Cidade, Endereco, CEP } = data

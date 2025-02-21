@@ -1,10 +1,11 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { ComponentProps } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const BreadcrumbsStyle = tv({
-  base: 'flex gap-2 text-[0.8rem] capitalize',
+  base: 'flex gap-2 text-[0.9rem] capitalize',
   variants: {
     isRouterProps: {
       true: 'text-black',
@@ -14,11 +15,10 @@ const BreadcrumbsStyle = tv({
 })
 
 type BreadcrumbsProps = ComponentProps<'div'> &
-  VariantProps<typeof BreadcrumbsStyle> & {
-    pathname: string
-  }
+  VariantProps<typeof BreadcrumbsStyle> & {}
 
-export function Breadcrumbs({ pathname, ...rest }: BreadcrumbsProps) {
+export function Breadcrumbs({ ...rest }: BreadcrumbsProps) {
+  const pathname = usePathname()
   const pathnames = pathname.split('/').filter((path) => path !== '')
 
   return (

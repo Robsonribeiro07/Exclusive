@@ -1,5 +1,5 @@
 'use client'
-import { ResponseProducts } from '@/app/(public)/products/Wishlist/page'
+import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
 import { CarouselProdcuts } from './carousel-prodcuts'
 import { HeaderCategoryId } from './header'
 import { useState } from 'react'

@@ -1,5 +1,6 @@
 'use client'
 import { CircleX, LogOut, ShoppingBag, Star, User } from 'lucide-react'
+import Link from 'next/link'
 
 const icons = {
   user: <User size={32} />,
@@ -10,14 +11,18 @@ const icons = {
 }
 export interface ItemsProps {
   icon: keyof typeof icons
+  href: string
   label: string
 }
 
-export function Items({ icon, label }: ItemsProps) {
+export function Items({ icon, label, href = '/' }: ItemsProps) {
   return (
-    <div className="flex items-center gap-2 text-white hover:text-black hover:bg-background px-3 w-full py-2 cursor-pointer">
+    <Link
+      className="flex items-center gap-2 text-black hover:text-black hover:bg-background px-3 w-full py-2 cursor-pointer"
+      href={href}
+    >
       {icons[icon]}
       {label}
-    </div>
+    </Link>
   )
 }

@@ -4,8 +4,6 @@ import { NextResponse } from 'next/server'
 const secretKey = process.env.NEXT_PUBLIC_JWT_SECRET_KEY
 
 async function POST(req: Request) {
-  console.log('chegou aqui')
-
   const progress = 'step3_andress'
 
   try {

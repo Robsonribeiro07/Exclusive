@@ -32,9 +32,6 @@ export function DialogExistingUser({
 
       const baseURL = '/auth/sign-in/'
 
-      console.log(progress)
-      console.log('chegou')
-
       return push(baseURL + progress)
     }
   }

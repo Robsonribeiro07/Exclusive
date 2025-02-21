@@ -1,5 +1,5 @@
 'use server'
-import api from '@/lib/axios'
+import api from '@/lib/axios/axios'
 import { cookies } from 'next/headers'
 
 interface _CreateLocationInformationType {

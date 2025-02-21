@@ -25,11 +25,13 @@ export function CarouselOurProducts({ products }: { products: Product[] }) {
                 title={product.title}
                 price={product.price}
                 image={product.images[0]}
+                id={product.id.toString()}
               />
               <CardProduct
                 title={product.title}
                 price={product.price}
                 image={product.images[0]}
+                id={product.id.toString()}
               />
             </CarouselItem>
           )

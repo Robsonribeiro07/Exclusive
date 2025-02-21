@@ -15,10 +15,8 @@ export function usePlayAndPauseVideo() {
         const video = target as HTMLVideoElement
 
         if (isIntersecting) {
-          console.log('play')
           video.play()
         } else {
-          console.log('pause')
           video.pause()
         }
       },

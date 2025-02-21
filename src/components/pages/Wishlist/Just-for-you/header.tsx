@@ -1,4 +1,4 @@
-import { Button } from '@/components/teste'
+import { Button } from '@/components/ui/button'
 import { StickyHeader } from '../../home/StickyHeader'
 
 export function HeaderForYou() {

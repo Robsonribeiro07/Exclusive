@@ -63,7 +63,6 @@ export default async function middleware(request: NextRequest) {
           redirect.pathname = '/auth/sign-in/step3_storeInformation'
           return NextResponse.redirect(redirect)
         } else if (decodedToken.progreessCompletion === 'true') {
-          console.log('chegou aqui')
           redirect.pathname = '/'
           return NextResponse.redirect(redirect)
         }

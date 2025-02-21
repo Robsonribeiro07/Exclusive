@@ -1,6 +1,6 @@
 import { AuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import api from '@/lib/axios'
+import api from '@/lib/axios/axios'
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -19,7 +19,6 @@ export const authOptions: AuthOptions = {
         })
 
         if (response.status === 200) {
-          console.log('Success')
         }
 
         return true

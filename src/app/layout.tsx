@@ -35,14 +35,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased  bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased   bg-white`}
       >
         <div className="flex flex-col items-center justify-center w-screen min-h-screen">
           <SubHeader />
           <Header />
           <Separator />
 
-          <main className="flex-1 flex w-screen flex-col lg:px-0 min-h-screen ">
+          <main className="flex-1 flex w-screen flex-col px-2 lg:px-0 min-h-screen ">
             <Toaster position="top-center" richColors />
             {children}
           </main>

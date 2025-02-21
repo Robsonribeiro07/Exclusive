@@ -1,5 +1,5 @@
 'use server'
-import api from '@/lib/axios'
+import api from '@/lib/axios/axios'
 import { cookies } from 'next/headers'
 
 interface _CreateStoreInformation {
@@ -32,7 +32,6 @@ export async function CreateStoreInformation({
     )
 
     if (response.status === 200 && response.data.token) {
-      console.log(response.data.token)
       const token = response.data.token
       cookieStore.set('token', token, {
         path: '/',

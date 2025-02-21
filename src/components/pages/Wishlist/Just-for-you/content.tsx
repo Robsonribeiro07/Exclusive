@@ -1,4 +1,4 @@
-import { ResponseProducts } from '@/app/(public)/products/Wishlist/page'
+import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
 
 import { HeaderForYou } from './header'
 import { CarouselForYou } from './carousel-for-you'

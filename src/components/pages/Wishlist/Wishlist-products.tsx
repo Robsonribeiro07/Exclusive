@@ -55,7 +55,7 @@ export function CardProductWishlist({
           className="w-[12rem] h-full  object-cover"
         />
 
-        <AddCart showAddCart={showAddCart} />
+        <AddCart showAddCart={showAddCart} handleAddProduct={() => {}} />
       </div>
 
       <p className="text-gray500 text-sm font-medium">{title}</p>

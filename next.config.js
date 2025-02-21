@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  redirects: async () => [
+    {
+      source: '/',
+      destination: '/home',
+      permanent: true,
+    },
+  ],
   images: {
     remotePatterns: [
       {
@@ -9,6 +16,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'fakestoreapi.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },

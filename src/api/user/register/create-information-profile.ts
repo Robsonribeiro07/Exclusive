@@ -1,5 +1,5 @@
 'use server'
-import api from '@/lib/axios'
+import api from '@/lib/axios/axios'
 import { cookies } from 'next/headers'
 
 interface _CreateInformationProfileType {
@@ -36,7 +36,6 @@ export async function CreateInformationProfile({
     )
 
     if (response.status === 200 && response.data.token) {
-      console.log(response.data.token)
       const token = response.data.token
       cookieStore.set('token', token, {
         path: '/',
