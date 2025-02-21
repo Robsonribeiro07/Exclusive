@@ -2,6 +2,10 @@
 
 ## Instalação
 
+## Design Padrao
+
+- Todas as rotas devem ter o layout de w-full max-w-[1170px] mx-auto min-h-screen
+
 ### Configuração do Google OAuth 2.0
 
 Para configurar o OAuth 2.0 com o Google, siga os passos abaixo:

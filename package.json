@@ -2,7 +2,6 @@
   "name": "exclusive",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,6 +16,9 @@
     "@hookform/resolvers": "^4.0.0",
     "@next/eslint-plugin-next": "^15.1.7",
     "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-hover-card": "^1.1.6",
+    "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "axios": "^1.7.9",
     "bcrypt": "^5.1.1",

@@ -1,10 +1,10 @@
 import { Heart, ShoppingCart } from 'lucide-react'
 import { Navigation } from './navigation'
 import { SearchInput } from './search-input'
-
+import { DetailsProfile } from '@/components/profile/details/details'
 export function Header() {
   return (
-    <div className="w-full mt-10 flex items-center h-8  justify-between  max-w-[1170px]">
+    <div className="w-full mt-10 flex items-center h-8  justify-between  max-w-[1170px] ">
       <div className="gap-[11.875rem] flex">
         <h1 className="text-xl text-black font-bold">Exclusive</h1>
 
@@ -14,9 +14,10 @@ export function Header() {
       <div className="flex items-center gap-6">
         <SearchInput />
 
-        <div className="flex gap-6 text-black">
-          <Heart />
-          <ShoppingCart />
+        <div className="flex gap-6 text-black items-center">
+          <Heart className="cursor-pointer" />
+          <ShoppingCart className="cursor-pointer" />
+          <DetailsProfile />
         </div>
       </div>
     </div>

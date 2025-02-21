@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-interface CountdownResult {
+export interface CountdownResult {
   days: { value: number; title: string }
   hours: { value: number; title: string }
   minutes: { value: number; title: string }

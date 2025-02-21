@@ -1,4 +1,10 @@
-import { ChevronDown } from 'lucide-react'
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from '../ui/select'
 export function SubHeader() {
   return (
     <header className="w-full h-10 bg-black flex items-center justify-center text-sm text-white ">
@@ -10,8 +16,16 @@ export function SubHeader() {
         <p className="font-semibold">ShopNow</p>
 
         <div className="flex items-center gap-2 absolute right-0">
-          <p>English</p>
-          <ChevronDown size={16} />
+          <Select defaultValue={'English'}>
+            <SelectTrigger className="bg-transparent border-none text-white flex gap-3 ">
+              <SelectValue />
+            </SelectTrigger>
+
+            <SelectContent>
+              <SelectItem value="English">English</SelectItem>
+              <SelectItem value="Portuguese">Portugues</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
     </header>

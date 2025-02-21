@@ -1,5 +1,4 @@
 'use client'
-import { Products } from '@/api/products/get-products'
 import { CardProduct } from '@/components/products/card-product'
 import {
   Carousel,
@@ -11,6 +10,8 @@ import {
 import { Product } from '@/api/products/get-products'
 
 export function CarouselOurProducts({ products }: { products: Product[] }) {
+  if (!Array.isArray(products) || products.length === 0) return null
+
   return (
     <Carousel className="select-none relative">
       <CarouselContent>

@@ -1,4 +1,4 @@
-import { StickyHeader } from '@/components/home/StickyHeader'
+import { StickyHeader } from '@/components/pages/home/StickyHeader'
 import { Button } from '@/components/ui/button'
 
 export function HeaderThisMonth() {

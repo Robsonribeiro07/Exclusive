@@ -4,7 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { CardProduct } from '../../../products/card-product'
+import { CardProduct } from '../../../../products/card-product'
 import { Product } from '@/api/products/get-products'
 
 export function CarouselThisMonth({ products }: { products: Product[] }) {

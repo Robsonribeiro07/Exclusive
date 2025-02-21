@@ -1,23 +1,24 @@
 import Image from 'next/image'
-import { ProductDescont } from './product-descont'
 
-import { Eye, Heart } from 'lucide-react'
-import { Price } from './price'
-import { StarRating } from './SartRating'
+import { Trash2 } from 'lucide-react'
 import { useState } from 'react'
-import { AddCart } from './add-cart'
+import { ProductDescont } from '@/components/products/product-descont'
+import { Price } from '@/components/products/price'
+import { AddCart } from '@/components/products/add-cart'
 
 interface CardProductProps {
   title: string
   price: number
   image: string
   showAddCartDefault?: boolean
+  handleRemoveItem?: () => void
 }
-export function CardProduct({
+export function CardProductWishlist({
   title,
   price,
   image,
   showAddCartDefault = false,
+  handleRemoveItem,
 }: CardProductProps) {
   const [showAddCart, setShowAddCart] = useState(showAddCartDefault)
 
@@ -39,13 +40,10 @@ export function CardProduct({
       <div className="w-full h-[70%] bg-gray200 relative rounded-4 flex flex-col items-center overflow-hidden">
         <ProductDescont descont={50} className="absolute top-3 left-2 " />
         <div className="absolute top-3 right-2 flex flex-col gap-2">
-          <Eye
+          <Trash2
             size={20}
-            className="bg-white w-7 h-7 rounded-full cursor-pointer"
-          />
-          <Heart
-            size={20}
-            className="bg-white w-7 h-7 rounded-full cursor-pointer"
+            className="bg-white w-8 h-8 rounded-full cursor-pointer p-1"
+            onClick={handleRemoveItem}
           />
         </div>
 
@@ -66,12 +64,6 @@ export function CardProduct({
         <Price discount>{price}</Price>
 
         <Price withLine>{price}</Price>
-      </div>
-
-      <div className="flex items-end gap-2 mt-2">
-        <StarRating totalReviews={30} positiveReviews={10} />
-
-        <span className="flex items-center text-Label">(1000)</span>
       </div>
     </div>
   )

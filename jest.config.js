@@ -13,7 +13,8 @@ const customJestConfig = {
     '^@/app/(.*)$': '<rootDir>/src/app/$1',
     '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
-    '^@/stores/(.*)$': '<rootDir>/src/stores/$1', // <-- Adicione esta linha
+    '^@/stores/(.*)$': '<rootDir>/src/stores/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
     'lucide-react':
       '<rootDir>/node_modules/lucide-react/dist/umd/lucide-react.js',
     '^next/navigation$':

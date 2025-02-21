@@ -5,7 +5,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from '@/components/ui/carousel'
-import { IconName } from '../../../../public/category/index'
+import { IconName } from '../../../../../public/category/index'
 import { CategoryCard } from './category-card'
 
 const categories = [

@@ -6,7 +6,7 @@ import {
   Women,
   Speaker,
   Gucci,
-} from '../../../../../public/temp/index'
+} from '../../../../../../public/temp/index'
 
 export function FeatureContent() {
   return (

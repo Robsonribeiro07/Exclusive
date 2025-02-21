@@ -21,6 +21,7 @@ export function StarRating({
         return (
           <Star
             key={index}
+            data-testid={`star-${index}`}
             className={`w-6 h-6 ${
               rating >= starValue
                 ? 'fill-yellow-400 text-yellow-400'

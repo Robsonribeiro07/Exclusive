@@ -1,12 +1,12 @@
 'use client'
-import headphones from '../../../../public/category/headphones.svg'
+import headphones from '/public/category/headphones.svg'
 import {
   laptop,
   phone,
   gaming,
   camera,
   smartwatch,
-} from '../../../../public/category/index'
+} from '../../../../../public/category/index'
 
 import { tv } from 'tailwind-variants'
 

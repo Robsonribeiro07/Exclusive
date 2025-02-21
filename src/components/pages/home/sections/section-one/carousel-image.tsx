@@ -9,8 +9,8 @@ import BannerImg from '/public/image.png'
 import Image from 'next/image'
 import { usePlayAndPauseVideo } from './play-and-pause-video'
 import { useEffect, useRef, useState } from 'react'
-import { useVisibleElementInPage } from '@/hooks/use-visible-element-in-page'
-import { useTabFocus } from '@/hooks/use-tab-focus'
+import { useVisibleElementInPage } from '@/hooks/use-visible-element/use-visible-element-in-page'
+import { useTabFocus } from '@/hooks/tab-focus/use-tab-focus'
 
 export function CarouselImage() {
   const { setElementref } = usePlayAndPauseVideo()
