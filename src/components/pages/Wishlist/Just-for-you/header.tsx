@@ -12,7 +12,7 @@ export function HeaderForYou() {
         Just for you
       </StickyHeader>
 
-      <Button className="text-base font-medium bg-transparent w-[7.9375rem] h-[1.5rem] px-[5rem] py-[1.5rem] text-black border border-[#7F7F7F] flex items-center justify-center whitespace-nowrap hover:bg-white/10">
+      <Button className="text-base font-medium bg-transparent w-[7.9375rem] h-[1.5rem] px-[5rem] py-[1.5rem] text-black border border-[#7F7F7F] flex items-center justify-center whitespace-nowrap hover:bg-white/10 rounded">
         See all
       </Button>
     </header>
