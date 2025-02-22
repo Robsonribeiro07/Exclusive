@@ -5,7 +5,7 @@ import { Product } from '@/api/products/get-products'
 
 export function ContentOurProducts({ products }: { products: Product[] }) {
   return (
-    <div className="mt-[6.9375rem] flex flex-col gap-[4.75rem]">
+    <div className=" flex flex-col gap-[4.75rem]">
       <HeaderOurProducts />
       <CarouselOurProducts products={products} />
 

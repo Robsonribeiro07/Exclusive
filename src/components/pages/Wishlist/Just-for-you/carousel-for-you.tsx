@@ -17,6 +17,7 @@ export function CarouselForYou({ data }: { data: ResponseProducts[] }) {
               price={Number(products.price)}
               image={products.image}
               id={products.id.toString()}
+              showAddCartDefault
             />
           </CarouselItem>
         ))}

@@ -18,7 +18,7 @@ export function CarouselOurProducts({ products }: { products: Product[] }) {
         {products.map((product) => {
           return (
             <CarouselItem
-              className="flex gap-7 flex-col basis-1/4"
+              className="flex gap-7 flex-col lg:basis-1/4 basis-1/1"
               key={product.id}
             >
               <CardProduct

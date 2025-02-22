@@ -4,7 +4,8 @@ import { decodeToken } from '@/functions/middleware/decode-token'
 
 export function useGetTokenDecode() {
   const [tokenDecode, setTokenDecode] = useState<{
-    progress: 'step1_Profile' | 'step2_andress' | 'step3_storeInformation'
+    progress: string
+    progressCompletion: string
     email: string
     name: string
   } | null>(null)

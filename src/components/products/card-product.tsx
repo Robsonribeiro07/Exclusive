@@ -33,7 +33,7 @@ export function CardProduct({
 
   return (
     <div
-      className="h-[21.875rem] w-[250px] cursor-pointer min-h-fit"
+      className="h-[21.875rem] w-[250px] cursor-pointer  "
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
       data-testid="card-product"
@@ -62,7 +62,7 @@ export function CardProduct({
         <AddCart showAddCart={showAddCart} handleAddProduct={() => {}} />
       </div>
 
-      <p className="text-gray500 text-sm font-medium">{title}</p>
+      <p className="text-gray500 text-sm font-medium">{title.slice(0, 40)}</p>
 
       <div className="flex gap-2 mt-1">
         <Price discount>{price}</Price>

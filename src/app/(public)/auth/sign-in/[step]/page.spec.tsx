@@ -18,7 +18,7 @@ jest.mock('next/navigation', () => ({
 
 describe('Page Sign In', () => {
   beforeEach(() => {
-    jest.clearAllMocks() // Garante que os mocks sejam redefinidos entre os testes
+    jest.clearAllMocks()
   })
 
   it('deve renderizar step 1', () => {

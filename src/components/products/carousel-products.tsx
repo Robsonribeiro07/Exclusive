@@ -51,7 +51,7 @@ export function CarouselProducts({
     >
       <CarouselContent className="flex gap-[5rem] relative">
         {products.map((item) => (
-          <CarouselItem key={item.id} className="basis-1/6">
+          <CarouselItem key={item.id} className="md:basis-1/6 basis-1/1 ">
             <CardProduct
               title={item.title}
               price={item.price}

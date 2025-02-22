@@ -52,6 +52,7 @@ describe('CarouselOurProducts', () => {
               title={products.title}
               price={products.price}
               image={products.images[0]}
+              id={products.id.toString()}
             />
           )
         })}
@@ -67,7 +68,7 @@ describe('CarouselOurProducts', () => {
     expect(image).toBeInTheDocument()
     expect(image).toHaveAttribute(
       'src',
-      '/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F150&w=256&q=75'
+      '/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F150&w=1200&q=75'
     )
   })
 })

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import GoogleSvg from '../../../public/google.svg'
 
 import { signIn } from 'next-auth/react'
@@ -9,7 +8,7 @@ export function ButtonSignWithGoogle() {
       type="button"
       onClick={() => signIn('google')}
     >
-      <Image src={GoogleSvg} alt="Google" />
+      <GoogleSvg />
     </button>
   )
 }

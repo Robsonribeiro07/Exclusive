@@ -34,7 +34,7 @@ export async function NewUser(formData: FormData) {
         email: string
         name: string
         progress: string
-        progreessCompletion: string
+        progressCompletion: string
       } = await decodeToken(data.token)
 
       return {

@@ -8,6 +8,7 @@ describe('CardProduct', () => {
       <CardProduct
         title="Product 1"
         price={10}
+        id={'2'}
         image="https://via.placeholder.com/150"
       />
     )
@@ -18,7 +19,7 @@ describe('CardProduct', () => {
     expect(img).toBeInTheDocument()
     expect(img).toHaveAttribute(
       'src',
-      '/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F150&w=256&q=75'
+      '/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F150&w=1200&q=75'
     )
   })
 
@@ -27,6 +28,7 @@ describe('CardProduct', () => {
       <CardProduct
         title="Product 1"
         price={10}
+        id="2"
         image="https://via.placeholder.com/150"
       />
     )
@@ -41,7 +43,9 @@ describe('CardProduct', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByText('Add to Cart')).toHaveClass(positionInitital)
+        expect(screen.getByTestId('add-cart-button')).toHaveClass(
+          positionInitital
+        )
       },
       { timeout: 1000 }
     )
@@ -50,7 +54,7 @@ describe('CardProduct', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByText('Add to Cart')).not.toHaveClass(
+        expect(screen.getByTestId('add-cart-button')).not.toHaveClass(
           positionInitital
         )
       },

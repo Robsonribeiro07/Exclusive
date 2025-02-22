@@ -25,7 +25,7 @@ export function Card({
   return (
     <div
       className={twMerge(
-        'w-full h-full  flex flex-col justify-end relative',
+        'w-full h-full  flex flex-col justify-end relative min-h-fit',
         className
       )}
       {...props}

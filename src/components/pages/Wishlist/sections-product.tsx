@@ -1,9 +1,10 @@
 'use client'
-import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
 import { CarouselProdcuts } from './carousel-prodcuts'
 import { HeaderCategoryId } from './header'
 import { useState } from 'react'
 import { ContentForYou } from './Just-for-you/content'
+import { ResponseProducts } from '@/app/(public)/home/products/wishlist/page'
+import { Breadcrumbs } from '@/components/breadcrumbs/Breadcrumbs'
 
 export function SectionsProduct({ data }: { data: ResponseProducts[] }) {
   const [initailProducts, setInitailProducts] =
@@ -17,6 +18,7 @@ export function SectionsProduct({ data }: { data: ResponseProducts[] }) {
   }
   return (
     <div className="w-full flex flex-col gap-10 h-full  ">
+      <Breadcrumbs />
       <HeaderCategoryId totalProducts={initailProducts.length} />
       <CarouselProdcuts
         data={initailProducts}

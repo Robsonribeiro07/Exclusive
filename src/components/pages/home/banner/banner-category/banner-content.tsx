@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 export function BannerContent() {
   const { timeLeft } = UseCountdown({ date: '2025-03-01' })
   return (
-    <div className="w-full h-fit bg-black flex justify-around px-[3.5rem] mt-[6rem]  flex-col sm:flex-row">
+    <div className="w-full h-fit bg-black flex justify-around px-[3.5rem] mt-[6rem]  flex-col sm:flex-row select-none">
       <div className="py-[3.5rem]">
         <p className="text-[#00FF66] text-[1rem]">Categories</p>
         <p className="lg:text-3xl text-xl font-semibold text-[#FAFAFA]">

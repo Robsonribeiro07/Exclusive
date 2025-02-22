@@ -3,7 +3,7 @@ import { UseCountdown } from '@/hooks/use-conntwdown'
 import { CountdownStep } from './countdown-step'
 
 export function Countdowm() {
-  const { timeLeft } = UseCountdown({ date: '2025-02-20' })
+  const { timeLeft } = UseCountdown({ date: '2025-03-30' })
 
   return (
     <div className="flex gap-[1.1rem] select-none">

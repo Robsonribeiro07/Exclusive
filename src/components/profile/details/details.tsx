@@ -15,7 +15,7 @@ const itemsDetailsProfile = [
     icon: 'Favorite',
     label: 'My Wishlist',
     key: 'Wishlist',
-    href: '/products/wishlist',
+    href: '/home/products/wishlist',
   },
   { icon: 'LogOut', label: 'Logout', key: 'Logout' },
 ] as (ItemsProps & { key: string })[]

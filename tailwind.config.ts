@@ -31,6 +31,7 @@ export default {
         redSticker: '#DB4444',
         gray200: '#F5F5F5',
         textColor: '#FAFAFA',
+        borderGray: '#7F7F7F',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

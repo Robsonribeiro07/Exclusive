@@ -1,7 +1,6 @@
-import { ResponseProducts } from '@/app/(public)/products/wishlist/page'
-
 import { HeaderForYou } from './header'
 import { CarouselForYou } from './carousel-for-you'
+import { ResponseProducts } from '@/app/(public)/home/products/wishlist/page'
 
 export function ContentForYou({ data }: { data: ResponseProducts[] }) {
   return (

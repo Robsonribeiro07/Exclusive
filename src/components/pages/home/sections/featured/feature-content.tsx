@@ -10,52 +10,57 @@ import {
 
 export function FeatureContent() {
   return (
-    <div className="h-[40rem]">
+    <div className="min-h-fit w-full px-4">
       <HeaderFeatured />
 
-      <div className="h-full w-full flex flex-col lg:grid lg:grid-cols-2 gap-[2rem] mt-[2.5rem]">
-        <div className=" h-full flex items-end bg-black pb-3">
+      <div className="flex flex-col gap-6 sm:grid sm:grid-cols-2 mt-10">
+        <div className="flex items-end bg-black pb-3 w-full">
           <Card
-            className="bg-black flex flex-col relative h-[70%]"
-            left="left-10"
-            bottom="bottom-[2.2rem]"
+            className="bg-black flex flex-col relative h-[80%] max-sm:h-auto max-sm:aspect-[4/4]"
+            left="left-6 sm:left-10"
+            bottom="bottom-3 sm:bottom-[2.2rem]"
             image={Playstation}
             objectFit="contain"
             title="PlayStation 5"
             description="Black and White version of the PS5 coming out on sale."
           />
         </div>
-        <div className="grid grid-rows-2 gap-[2rem] ">
-          <div className="bg-red-500 max-h-[284px]">
+
+        {/* Segunda Coluna - Outros Produtos */}
+        <div className="flex flex-col gap-6 md:grid md:grid-rows-2">
+          {/* Item 1 - Women's Collection */}
+          <div className="min-h-[200px] md:min-h-[284px]">
             <Card
-              className="bg-black flex flex-col justify-end relative"
+              className="bg-black flex flex-col justify-end relative  w-full max-sm:aspect-[4/3] "
               image={Women}
-              left="left-6"
-              bottom="bottom-5"
+              left="left-4 sm:left-6"
+              bottom="bottom-3 sm:bottom-5"
               title="Women’s Collections"
               description="Featured woman collections that give you another vibe."
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-[1.6875rem] w-full h-full">
-            <div className="flex items-center bg-[#1E1E1E]">
+          {/* Itens 2 e 3 - Speaker & Perfume */}
+          <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
+            <div className="flex items-center bg-[#1E1E1E] p-4 rounded-lg">
               <Card
-                className="bg-[#1E1E1E] flex flex-col justify-end relative h-[70%]"
+                className="bg-[#1E1E1E] flex flex-col justify-end relative w-full max-sm:aspect-[4/3] h-[70%] max-sm:h-auto"
                 image={Speaker}
                 objectFit="contain"
-                left="left-6"
+                left="left-4 sm:left-6"
+                bottom="bottom-2 sm:bottom-[-0.5rem]"
                 title="Speaker"
-                bottom="bottom-[-1rem]"
                 description="Amazon wireless speakers"
               />
             </div>
-            <div className="flex items-center bg-[#1E1E1E]">
+
+            <div className="flex items-center bg-[#1E1E1E] p-4 rounded-lg">
               <Card
-                className="bg-[#1E1E1E] flex flex-col justify-end relative h-[70%]"
+                className="bg-[#1E1E1E] flex flex-col justify-end relative  w-full max-sm:aspect-[4/3] h-[70%] max-sm:h-auto"
                 image={Gucci}
                 objectFit="contain"
-                left="left-6"
-                bottom="bottom-[-1rem]"
+                left="left-4 sm:left-6"
+                bottom="bottom-2 sm:bottom-[-0.5rem]"
                 title="Perfume"
                 description="GUCCI INTENSE OUD EDP"
               />

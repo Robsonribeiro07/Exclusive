@@ -19,7 +19,7 @@ const categories = [
 export function CategoryCarousel() {
   return (
     <Carousel className="relative">
-      <CarouselContent className="grid grid-cols-2 lg:flex gap-3 lg:gap-0">
+      <CarouselContent className="grid grid-cols-3 md:flex gap-3 md:gap-0">
         {categories.map((category) => (
           <CarouselItem key={category} className="basis-1/6">
             <CategoryCard label={category} icon={category} />

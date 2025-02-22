@@ -12,7 +12,7 @@ export function CarouselThisMonth({ products }: { products: Product[] }) {
     <Carousel>
       <CarouselContent className="flex select-none">
         {products.map((product) => (
-          <CarouselItem key={product.id} className="basis-1/4">
+          <CarouselItem key={product.id} className="lg:basis-1/4 basis-1/1">
             <CardProduct
               title={product.title}
               price={product.price}

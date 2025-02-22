@@ -30,14 +30,9 @@ export default async function middleware(request: NextRequest) {
       email: string
       name: string
       progress: string
-      progreessCompletion: string
+      progressCompletion: string
     } = await decodeToken(isLoggedIn.value)
 
-    if (decodedToken.progreessCompletion === 'true') {
-      redirect.pathname = '/'
-
-      return NextResponse.redirect(redirect)
-    }
 
     if (nextUrl.pathname.includes(decodedToken.progress)) {
       return NextResponse.next()
@@ -62,7 +57,7 @@ export default async function middleware(request: NextRequest) {
         if (nextUrl.pathname !== '/auth/sign-in/step3_storeInformation') {
           redirect.pathname = '/auth/sign-in/step3_storeInformation'
           return NextResponse.redirect(redirect)
-        } else if (decodedToken.progreessCompletion === 'true') {
+        } else if (decodedToken.progressCompletion === 'true') {
           redirect.pathname = '/'
           return NextResponse.redirect(redirect)
         }

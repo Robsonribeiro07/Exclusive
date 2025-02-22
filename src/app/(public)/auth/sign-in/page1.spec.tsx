@@ -7,7 +7,11 @@ jest.mock('next/navigation', () => ({
     push: jest.fn(),
   }),
 }))
-
+jest.mock('./google.svg', () => {
+  const MockSvg = () => <svg data-testid="google-icon" />
+  MockSvg.displayName = 'MockGoogleSvg'
+  return MockSvg
+})
 let isReadyAccount = false
 
 const mockSetIsReadyAccount = jest.fn(() => {

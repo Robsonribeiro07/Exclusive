@@ -1,5 +1,5 @@
 'use client'
-import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs/Breadcrumbs'
 
 export default function Page() {
   return (

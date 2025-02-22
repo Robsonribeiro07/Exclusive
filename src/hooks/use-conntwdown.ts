@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export interface CountdownResult {
   days: { value: number; title: string }
@@ -20,15 +20,23 @@ export function UseCountdown({ date }: CountdownProps) {
     seconds: { value: 0, title: 'Seconds' },
   })
 
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      const target =
-        new Date(`${date}T00:00:00Z`).getTime() + 4 * 60 * 60 * 1000
-      const now = new Date().getTime()
-      const distance = target - now
+    const savedTargetTime = sessionStorage.getItem('countdownTarget')
+    let targetTime = savedTargetTime ? parseInt(savedTargetTime, 10) : null
+
+    if (!targetTime) {
+      targetTime = new Date(`${date}T00:00:00Z`).getTime() + 4 * 60 * 60 * 1000
+      sessionStorage.setItem('countdownTarget', targetTime.toString())
+    }
+
+    const updateCountdown = () => {
+      const now = Date.now()
+      const distance = targetTime! - now
 
       if (distance <= 0) {
-        clearInterval(interval)
+        clearInterval(intervalRef.current!)
         setTimeLeft({
           days: { value: 0, title: 'Days' },
           hours: { value: 0, title: 'Hours' },
@@ -38,22 +46,32 @@ export function UseCountdown({ date }: CountdownProps) {
         return
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
       setTimeLeft({
-        days: { value: days, title: 'Days' },
-        hours: { value: hours, title: 'Hours' },
-        minutes: { value: minutes, title: 'Minutes' },
-        seconds: { value: seconds, title: 'Seconds' },
+        days: {
+          value: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          title: 'Days',
+        },
+        hours: {
+          value: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
+          title: 'Hours',
+        },
+        minutes: {
+          value: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          title: 'Minutes',
+        },
+        seconds: {
+          value: Math.floor((distance % (1000 * 60)) / 1000),
+          title: 'Seconds',
+        },
       })
-    }, 1000)
+    }
 
-    return () => clearInterval(interval)
+    updateCountdown()
+    intervalRef.current = setInterval(updateCountdown, 1000)
+
+    return () => clearInterval(intervalRef.current!)
   }, [date])
 
   return { timeLeft }
