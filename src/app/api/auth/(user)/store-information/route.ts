@@ -55,6 +55,7 @@ async function POST(req: Request) {
         email: decoedToken.email,
         progressCompletion: 'true',
         progress: progress,
+        id: user._id,
       }
 
       const token = jwt.sign(UpdateToken, secretKey as string)

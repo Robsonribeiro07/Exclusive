@@ -1,19 +1,36 @@
 import Image from 'next/image'
 import { QuantityItemsCart } from './quantity'
+import { useEffect, useMemo, useState } from 'react'
 
 interface ItemsCartProps {
   image: string
   name: string
   price: number
-  quantity?: number
+  quantity: number
+  productId: string
 }
-export function ItemsCart({ image, name, price, quantity }: ItemsCartProps) {
-  console.log(`image`, image)
-  console.log(`name`, name)
-  console.log(`price`, price)
-  console.log(`quantity`, quantity)
+export function ItemsCart({
+  image,
+  name,
+  price,
+  quantity,
+  productId,
+}: ItemsCartProps) {
+  const [quantityChanger, setQuantityChanger] = useState(quantity)
+
+  const subTotal = useMemo(() => {
+    return price * quantityChanger
+  }, [price, quantityChanger])
+
+  useEffect(() => {
+    setQuantityChanger(quantity)
+  }, [quantity])
+
+  const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantityChanger(Number(e.currentTarget.value.slice(0, 2)))
+  }
   return (
-    <div className="grid grid-cols-4 w-full  items-center shadow-sm h-[102px]">
+    <div className="grid grid-cols-4 w-full  items-center shadow-sm h-[102px] select-none">
       <div className="flex gap-4 items-center">
         <Image
           src={image}
@@ -28,10 +45,16 @@ export function ItemsCart({ image, name, price, quantity }: ItemsCartProps) {
       <p className="text-center font-regular">{price}</p>
 
       <div className="font-regular flex items-center justify-center">
-        <QuantityItemsCart />
+        <QuantityItemsCart
+          quantityChanger={quantityChanger}
+          productId={productId}
+          handleSetValue={handleSetValue}
+        />
       </div>
 
-      <p className="text-end font-regular ">{price}</p>
+      <p className="text-end font-regulars select-none ">
+        {subTotal.toFixed(2)}
+      </p>
     </div>
   )
 }

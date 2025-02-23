@@ -12,6 +12,8 @@ async function POST(req: Request) {
     const authToken = req.headers.get('Authorization')
 
     const body = await req.json()
+
+    console.log(body)
     if (!authToken) {
       return NextResponse.json({ error: 'Token invalido' }, { status: 200 })
     }
@@ -55,7 +57,7 @@ async function POST(req: Request) {
       if (CEP) updateUser.cep = CEP
       updateUser.progressCompletion = 'false'
 
-      await User.updateOne(updateUser)
+      await User.updateOne({ email: decoedToken.email }, updateUser)
 
       const UpdateToken = {
         email: decoedToken.email,

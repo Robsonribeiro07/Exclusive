@@ -1,22 +1,39 @@
 import { NextResponse } from 'next/server'
+import jwt from 'jsonwebtoken'
+import { Cart, CartType } from '@/lib/models/cart'
+import connectDb from '@/lib/mongodb'
 
-interface ProductsCart {
-  id: string
-  name: string
-  price: number
-  quantity: number
-  image: string
-}
+export async function GET(req: Request) {
+  await connectDb()
 
-let productsOld: ProductsCart[] = []
+  const token = req.headers.get('authorization')?.split(' ')[1]
 
-export async function POST(request: Request) {
-  const data = await request.json()
+  if (!token) {
+    return NextResponse.json({ message: 'Token Invalid' }, { status: 400 })
+  }
 
-  productsOld = data
-  return NextResponse.json(data)
-}
+  try {
+    const decodedToken = jwt.verify(
+      token,
+      process.env.NEXT_PUBLIC_JWT_SECRET_KEY!
+    ) as { id: string }
 
-export async function GET() {
-  return NextResponse.json(productsOld)
+    // 🔹 Procura o carrinho, se não existir, cria um novo
+    const cart = (await Cart.findOneAndUpdate(
+      { userId: decodedToken.id }, // Filtro: busca pelo ID do usuário
+      {
+        $setOnInsert: { userId: decodedToken.id, products: [] },
+      },
+      {
+        upsert: true,
+        new: true,
+      }
+    )) as CartType
+    console.log(`cart ${cart}`)
+
+    return NextResponse.json(cart)
+  } catch (e) {
+    console.log(e)
+    return NextResponse.json({ message: 'Token Invalid' }, { status: 400 })
+  }
 }

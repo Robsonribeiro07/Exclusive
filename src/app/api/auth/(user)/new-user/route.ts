@@ -80,14 +80,5 @@ async function POST(request: Request) {
     )
   }
 }
-async function GET() {
-  try {
-    await dbConnect()
-  } catch {
-    console.log('erro')
-  }
 
-  return NextResponse.json({ message: 'ola' })
-}
-
-export { GET, POST }
+export { POST }

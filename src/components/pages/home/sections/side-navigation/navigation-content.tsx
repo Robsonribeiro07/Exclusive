@@ -1,7 +1,9 @@
 'use client'
+import { useCart } from '@/stores/products/cart/use-state-cart'
 import { Navigation } from './navigation'
 
 export function NavigationContent() {
+  const { setValue } = useCart()
   const navigation = [
     'woman fashion',
     'man',
@@ -18,6 +20,7 @@ export function NavigationContent() {
           {item}
         </Navigation>
       ))}
+      <p onClick={() => setValue('Amor')}>ola</p>
     </div>
   )
 }

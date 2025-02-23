@@ -6,6 +6,8 @@ import { Header } from '@/components/header/header/header'
 import { Separator } from '@/components/separator'
 import { Toaster } from 'sonner'
 import { ContentFooter } from '@/components/footer/content'
+import { QueryClientProvider } from '@tanstack/react-query'
+import queryClient from '@/lib/queryclient'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,25 +35,27 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased   bg-white`}
-      >
-        <div className="flex flex-col items-center justify-center w-screen min-h-screen">
-          <SubHeader />
-          <Header />
-          <Separator />
+    <QueryClientProvider client={queryClient}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased   bg-white`}
+        >
+          <div className="flex flex-col items-center justify-center w-screen min-h-screen">
+            <SubHeader />
+            <Header />
+            <Separator />
 
-          <main className="flex-1 flex w-screen flex-col px-2 lg:px-0 min-h-screen ">
-            <Toaster position="top-center" richColors />
-            {children}
-          </main>
+            <main className="flex-1 flex w-screen flex-col px-2 lg:px-0 min-h-screen ">
+              <Toaster position="top-center" richColors />
+              {children}
+            </main>
 
-          <footer className="w-full  bg-[#000000] min-h-[27.5rem] flex items-center justify-center relative">
-            <ContentFooter />
-          </footer>
-        </div>
-      </body>
-    </html>
+            <footer className="w-full  bg-[#000000] min-h-[23.5rem] flex items-center justify-center relative">
+              <ContentFooter />
+            </footer>
+          </div>
+        </body>
+      </html>
+    </QueryClientProvider>
   )
 }

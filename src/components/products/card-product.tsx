@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { ProductDescont } from './product-descont'
 
@@ -6,7 +7,7 @@ import { Price } from './price'
 import { StarRating } from './SartRating'
 import { useState } from 'react'
 import { AddCart } from './add-cart'
-
+import { useNewProductCart } from '@/hooks/cart/new-product-cart'
 interface CardProductProps {
   title: string
   price: number
@@ -23,12 +24,26 @@ export function CardProduct({
 }: CardProductProps) {
   const [showAddCart, setShowAddCart] = useState(showAddCartDefault)
 
+  const { handleAddNewProducts } = useNewProductCart()
+
   const handleMouseOver = () => {
     setShowAddCart(true)
   }
 
   const handleMouseLeave = () => {
     setShowAddCart(false)
+  }
+
+  const handleAddProduct = async () => {
+    const idTemp = crypto.randomUUID()
+
+    handleAddNewProducts({
+      price,
+      productId: id,
+      image,
+      title,
+      _id: idTemp,
+    })
   }
 
   return (
@@ -59,7 +74,10 @@ export function CardProduct({
           className="w-[80%] h-[80%]  object-contain"
         />
 
-        <AddCart showAddCart={showAddCart} handleAddProduct={() => {}} />
+        <AddCart
+          showAddCart={showAddCart}
+          handleAddProduct={handleAddProduct}
+        />
       </div>
 
       <p className="text-gray500 text-sm font-medium">{title.slice(0, 40)}</p>

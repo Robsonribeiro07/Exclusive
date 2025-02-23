@@ -23,7 +23,7 @@ const UserSchema = new Schema(
   { timestamps: true }
 )
 
-export type UserType = InferSchemaType<typeof UserSchema>
+export type UserType = InferSchemaType<typeof UserSchema> & { _id: string }
 
 const User = models.UserSchemapp || model('UserSchemapp', UserSchema)
 

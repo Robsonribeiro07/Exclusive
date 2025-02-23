@@ -33,7 +33,6 @@ export default async function middleware(request: NextRequest) {
       progressCompletion: string
     } = await decodeToken(isLoggedIn.value)
 
-
     if (nextUrl.pathname.includes(decodedToken.progress)) {
       return NextResponse.next()
     }

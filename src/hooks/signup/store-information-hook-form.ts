@@ -2,7 +2,7 @@
 import z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { redirect, usePathname } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { CreateStoreInformation } from '@/api/user/register/create-store-information'
 
 const StoreInformationSchema = z.object({
@@ -14,8 +14,6 @@ const StoreInformationSchema = z.object({
 type storeInformationSchema = z.infer<typeof StoreInformationSchema>
 
 export function useStoreInformationForm() {
-  const pathName = usePathname()
-
   const {
     register,
     handleSubmit,
@@ -34,15 +32,13 @@ export function useStoreInformationForm() {
 
     const { NameStore, DescriptionStore, Categorias } = data
 
-    const { redirectUrl } = await CreateStoreInformation({
+    await CreateStoreInformation({
       NameStore,
       DescriptionStore,
       Categorias,
     })
 
-    const newUrl = new URL(redirectUrl, process.env.NEXT_PUBLIC_URL)
-    newUrl.searchParams.set('callbackUrl', pathName)
-    redirect(newUrl.toString())
+    redirect('/home')
   }
   return {
     register,

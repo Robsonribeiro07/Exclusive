@@ -6,16 +6,23 @@ if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not defined')
 }
 
-const connectDb = async (): Promise<void> => {
-  try {
-    if (mongoose.connection.readyState === 1) return
+let cached = (global as any).mongoose || { conn: null, promise: null }
 
-    await mongoose.connect(MONGODB_URI)
-    console.log('Connected to MongoDB')
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error)
-    throw error
+const connectDb = async (): Promise<typeof mongoose> => {
+  if (cached.conn) {
+    console.log('Using existing MongoDB connection')
+    return cached.conn
   }
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+      console.log('Connected to MongoDB')
+      return mongoose
+    })
+  }
+
+  cached.conn = await cached.promise
+  return cached.conn
 }
 
 export default connectDb
