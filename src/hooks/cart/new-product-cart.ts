@@ -3,6 +3,7 @@ import { ProductsCartResponse } from '@/api/cart/get-products-cart'
 import queryClient from '@/lib/queryclient'
 import { useMutation } from '@tanstack/react-query'
 import Cookies from 'js-cookie'
+import { toast } from 'sonner'
 interface AddProductCartProps {
   productId: string
   title: string
@@ -17,13 +18,9 @@ export function useNewProductCart() {
     onMutate: (variables) => {
       const { image, price, productId, title, _id } = variables
 
-      console.log(variables)
-
       const allProduts = queryClient.getQueryData<ProductsCartResponse>([
         'products',
       ])
-
-      console.log(allProduts)
 
       if (!allProduts) {
         return allProduts
@@ -36,6 +33,8 @@ export function useNewProductCart() {
           existingProducts.quantity = existingProducts.quantity + 1
         }
 
+        toast.success('Item adiciona no carrinho com sucess')
+        toast.dismiss()
         const newProducts = {
           image: [image],
           productId,
@@ -54,6 +53,7 @@ export function useNewProductCart() {
     },
 
     onError(_, __, context) {
+      toast.error('Error ao adiciona pedido ao carrinho')
       if (context?.allProduts) {
         queryClient.setQueryData(['products'], context.allProduts)
       }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { decodeToken } from './functions/middleware/decode-token'
+import next from 'next'
 
 const routerFromRegister = [
   '/auth/sign-in',
@@ -8,6 +9,8 @@ const routerFromRegister = [
   '/auth/sign-in/step3_storeInformation',
 ]
 
+const routerPrivate = ['/home/cart']
+
 export default async function middleware(request: NextRequest) {
   const { nextUrl } = request
   const isLoggedIn = request.cookies.get('token')
@@ -15,6 +18,11 @@ export default async function middleware(request: NextRequest) {
 
   const isLoginRoute = routerFromRegister.includes(nextUrl.pathname)
 
+  // const isRouterPrivate = routerPrivate.includes(nextUrl.pathname)
+
+  // // if (isRouterPrivate && !isLoggedIn) {
+  // //   return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/home`)
+  // // }
   const PermissitionRedirectUrl = request.cookies.get('callbackUrl')
 
   // Se o usuário não estiver logado e não estiver na tel

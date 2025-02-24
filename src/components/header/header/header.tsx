@@ -1,8 +1,8 @@
-import { Heart, ShoppingCart } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { Navigation } from './navigation'
 import { SearchInput } from './search-input'
 import { DetailsProfile } from '@/components/profile/details/details'
-import Link from 'next/link'
+import { HandleNavigationLoggin } from './handle-navigation-loggin'
 export function Header() {
   return (
     <div className="w-full mt-10 flex items-center h-8  justify-between  max-w-[1170px] ">
@@ -17,9 +17,7 @@ export function Header() {
 
         <div className="flex gap-6 text-black items-center">
           <Heart className="cursor-pointer" />
-          <Link href="/home/cart">
-            <ShoppingCart className="cursor-pointer" />
-          </Link>
+          <HandleNavigationLoggin />
           <DetailsProfile />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useChangeQuantity } from '@/hooks/cart/use-change-quantity'
+import { useStateModelRemovingItems } from '@/stores/signup/cart/use-state-modal-removing-itens'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 interface QuantityItemsCartProps {
   quantityChanger: number
@@ -11,7 +12,7 @@ export function QuantityItemsCart({
   handleSetValue,
 }: QuantityItemsCartProps) {
   const { handleChangeQuantity } = useChangeQuantity()
-
+  const setOpen = useStateModelRemovingItems((set) => set.setOpen)
   const handleChangerQuantityOnblur = () => {
     handleChangeQuantity({
       value: quantityChanger,
@@ -30,7 +31,7 @@ export function QuantityItemsCart({
 
   const handleDecreaseChanger = () => {
     if (quantityChanger === 1) {
-      window.alert('Deseja remove esse item')
+      setOpen()
       return
     }
     handleChangeQuantity({

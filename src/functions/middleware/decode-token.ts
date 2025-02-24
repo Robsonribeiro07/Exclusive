@@ -3,6 +3,7 @@ export async function decodeToken(token: string): Promise<{
   progressCompletion: string
   email: string
   name: string
+  id: string
 }> {
   try {
     const payload = token.split('.')[1] // Pega a parte do payload (sem cabeçalho e assinatura)
@@ -14,6 +15,7 @@ export async function decodeToken(token: string): Promise<{
       progressCompletion: '',
       email: '',
       name: '',
+      id: '',
     }
   }
 }

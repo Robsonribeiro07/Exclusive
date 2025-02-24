@@ -1,11 +1,20 @@
+'use client'
 import { changeQuantityCart } from '@/api/cart/change-quantity'
-import { ProductsCartResponse } from '@/api/cart/get-products-cart'
+import {
+  ProductsCart,
+  ProductsCartResponse,
+} from '@/api/cart/get-products-cart'
+import { getTotalCart } from '@/functions/cart/get-total-cart'
 import queryClient from '@/lib/queryclient'
+import { useTotalCart } from '@/stores/cart/use-state-total-car'
 import { useMutation } from '@tanstack/react-query'
 import cookies from 'js-cookie'
 
 export function useChangeQuantity() {
   const token = cookies.get('token')
+
+  let newQuantityUpdates: ProductsCart[]
+  const { setTotalAmount } = useTotalCart()
 
   const { mutate } = useMutation({
     mutationFn: changeQuantityCart,
@@ -17,8 +26,6 @@ export function useChangeQuantity() {
         updates: { typeChanger, value, productId },
       } = variables
 
-      console.log(productId)
-
       const allProduts = queryClient.getQueryData(['products'])
 
       if (!allProduts) {
@@ -26,7 +33,7 @@ export function useChangeQuantity() {
       }
       if (allProduts) {
         queryClient.setQueryData(['products'], (data: ProductsCartResponse) => {
-          const newQuantityUpdates = data.products.map((products) => {
+          newQuantityUpdates = data.products.map((products) => {
             if (productId === products._id) {
               return {
                 ...products,
@@ -38,8 +45,15 @@ export function useChangeQuantity() {
                       : products.quantity - value,
               }
             }
+
             return products
           })
+
+          const updateTotalCart = getTotalCart({
+            products: newQuantityUpdates,
+          })
+
+          setTotalAmount(updateTotalCart)
           return {
             ...data,
             products: newQuantityUpdates,

@@ -8,6 +8,9 @@ import { StarRating } from './SartRating'
 import { useState } from 'react'
 import { AddCart } from './add-cart'
 import { useNewProductCart } from '@/hooks/cart/new-product-cart'
+import { useIsLoggedIn } from '@/hooks/user/user-isLoggin'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 interface CardProductProps {
   title: string
   price: number
@@ -23,6 +26,10 @@ export function CardProduct({
   showAddCartDefault = false,
 }: CardProductProps) {
   const [showAddCart, setShowAddCart] = useState(showAddCartDefault)
+
+  const { push } = useRouter()
+
+  const isLoggedIn = useIsLoggedIn()
 
   const { handleAddNewProducts } = useNewProductCart()
 
@@ -45,7 +52,13 @@ export function CardProduct({
       _id: idTemp,
     })
   }
+  const handleIsNotLogged = () => {
+    toast.info('Faça login primeiro')
+    toast.dismiss()
+    if (!isLoggedIn) push('/auth/sign-in')
+  }
 
+  const userIsLogged = isLoggedIn ? handleAddProduct : handleIsNotLogged
   return (
     <div
       className="h-[21.875rem] w-[250px] cursor-pointer  "
@@ -74,10 +87,7 @@ export function CardProduct({
           className="w-[80%] h-[80%]  object-contain"
         />
 
-        <AddCart
-          showAddCart={showAddCart}
-          handleAddProduct={handleAddProduct}
-        />
+        <AddCart showAddCart={showAddCart} handleAddProduct={userIsLogged} />
       </div>
 
       <p className="text-gray500 text-sm font-medium">{title.slice(0, 40)}</p>

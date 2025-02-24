@@ -4,13 +4,15 @@ import { ItemsCart } from './Items-cart'
 import { Button } from '../../ui/button'
 import { useGetProductsCart } from '@/hooks/cart/use-get-products'
 import { ItemSkeletonCart } from './item-seleton'
+import { AlertRemovingItens } from './modals/alert-removing-itens'
 
 export function CartContent() {
   const { products, isFetching } = useGetProductsCart()
 
-  console.log(`products${JSON.stringify(products)}`)
   return (
     <div className="flex flex-col">
+      <AlertRemovingItens />
+
       <HeaderCart />
       <div className="flex flex-col gap-10 flex-1">
         {isFetching || !products ? (
